@@ -1,0 +1,31 @@
+<h4 align="center"class="display-4">{{title}}</h4>
+<div class="card text-center" style=" margin-left: 30%; margin-right: 30%;">
+    <img src="{{product.productIcon}}" height="60%"/>
+    <form (ngSubmit)= "onSubmit()">
+        <div class="card-body">
+            <div class="card-title">
+                {{product?.productName}}
+            </div>
+            <div class="text-left">
+                <p><strong>Description:</strong>{{product?.productDescription}}</p>
+                <p><strong>Price:</strong>30$</p>
+                <p><strong>Stock: </strong>{{product?.productStock}}</p>
+                <div class="form-inline">
+                    <label class="mr-1"> <strong>Quantity</strong></label>
+                    <input type="number" 
+                        min="1"
+                        [max]="product?.productStock"
+                        name="count" 
+                        [(ngModel)]="count"
+                        class="custom-control" 
+                        (change)="validateCount()">
+                </div>
+                <p><strong>Subtotal: </strong>{{count * product?.productPrice | currency}}</p>
+            </div>
+            <button class="btn btn-primary btn-lg" type="submit" *ngIf="product?.productStatus == 0; else offBlock">Add to Cart</button>
+            <ng-template #offBlock><a class="btn btn-secondary btn-lg disabled">Unavailable</a></ng-template>
+        </div>
+    </form>
+</div>  
+
+

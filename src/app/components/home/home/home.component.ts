@@ -32,7 +32,14 @@ export class HomeComponent implements OnInit, OnDestroy {
     }); 
   }
 
+  /*mục đích dùng để nhận diện và xử lý 2 case là get tất cả product (hiện không chưa phân page)
+  và get theo category. 
+   */
   update() {
+    /* lấy ra đường đường path (this.router.snapshot.url trả về mảng nhé) của route ví dụ
+    http://localhost:4200/product  url[0].path --> product
+    http://localhost:4200/category/0 url[0].path --> category , url[1].path -->0
+    */
     const path = this.router.snapshot.url[0].path;
     console.log('path ' + path);
     

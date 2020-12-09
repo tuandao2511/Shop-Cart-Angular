@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProductService } from 'src/app/service/product.service';
 import { ActivatedRoute } from '@angular/router';
-import { url } from 'inspector';
 
 @Component({
   selector: 'app-home',

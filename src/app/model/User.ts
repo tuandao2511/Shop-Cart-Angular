@@ -1,5 +1,4 @@
-import { Role } from '../components/enum/Role';
-
+import { Role } from '../enum/Role';
 
 export class User {
 

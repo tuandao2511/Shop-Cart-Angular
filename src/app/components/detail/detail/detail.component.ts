@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductInfo } from 'src/app/model/productInfo';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from 'src/app/service/product.service';
+import { CartService } from 'src/app/service/cart.service';
+import { ProductInOrder } from 'src/app/model/productInOrder';
 
 @Component({
   selector: 'app-detail',
@@ -16,7 +18,7 @@ export class DetailComponent implements OnInit {
   count : number = 1;
 
   constructor(private route: ActivatedRoute, 
-    private productService: ProductService) { 
+    private productService: ProductService, private cartService: CartService, private router: Router) { 
     
   }
   
@@ -38,7 +40,7 @@ export class DetailComponent implements OnInit {
         this.product = _product;
       },
       function(err) {
-
+        
       }
     )
   }
@@ -54,6 +56,9 @@ export class DetailComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('khong thanh cong');
+    let productInOrder : ProductInOrder = new ProductInOrder(this.product, this.count); 
+    this.cartService.addItem(productInOrder).subscribe(status => {
+      this.router.navigateByUrl('/cart');
+    });
   }
 }

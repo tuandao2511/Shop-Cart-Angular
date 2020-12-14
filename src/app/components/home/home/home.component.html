@@ -13,7 +13,7 @@
             <p><strong>Stock: </strong>{{product?.productStock}}</p>
           </div>
           <a class="btn btn-primary btn-lg" *ngIf="product?.productStatus == 0; else offBlock" 
-          routerLink="product/{{product?.productId}}">Get It!</a>
+          routerLink="./{{product?.productId}}">Get It!</a>
           <ng-template #offBlock><a class="btn btn-secondary btn-lg disabled">Unavailable</a></ng-template>
         </div>
     </div>

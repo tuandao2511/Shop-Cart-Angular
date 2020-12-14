@@ -8,10 +8,14 @@ import { FooterComponent } from './components/footer/footer/footer.component';
 import { HomeComponent } from './components/home/home/home.component';
 import { DetailComponent } from './components/detail/detail/detail.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RegisterComponent } from './components/register/register/register.component';
 import { LoginComponent } from './components/login/login/login.component';
 import { CartComponent } from './components/cart/cart/cart.component';
+import { CookieService } from 'ngx-cookie-service';
+import { UserEditComponent } from './components/user-edit/user-edit.component';
+import { JwtInterceptorService } from './service/jwt-interceptor.service';
+import { ErrorInterceptorService } from './service/error-interceptor.service';
 
 
 @NgModule({
@@ -24,6 +28,7 @@ import { CartComponent } from './components/cart/cart/cart.component';
     RegisterComponent,
     LoginComponent,
     CartComponent,
+    UserEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,7 +36,9 @@ import { CartComponent } from './components/cart/cart/cart.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [CookieService,
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptorService, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

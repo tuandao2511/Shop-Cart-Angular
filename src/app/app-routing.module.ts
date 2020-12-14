@@ -4,6 +4,7 @@ import { DetailComponent } from './components/detail/detail/detail.component';
 import { HomeComponent } from './components/home/home/home.component';
 import { RegisterComponent } from './components/register/register/register.component';
 import { LoginComponent } from './components/login/login/login.component';
+import { UserEditComponent } from './components/user-edit/user-edit.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'profile',
+    component: UserEditComponent
   }
 ];
 

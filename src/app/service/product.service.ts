@@ -30,6 +30,8 @@ export class ProductService {
   //   )
   // }
 
+
+  
    getProduct(page: number, size: number) : Observable<any>{
      const url = `${urlApi}/product?page=${page}&size=${size}`
      return this.http.get(url).pipe();
@@ -45,7 +47,6 @@ export class ProductService {
      )
    }
 
-   /* api: localhost:8080/api/category/0 */
    getProductCategory(type: number, page: number, size: number) : Observable<any>{
     const url = `${urlApi}/category/${type}?page=${page}&size=${size}`
     return this.http.get(url).pipe();

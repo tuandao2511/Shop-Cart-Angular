@@ -16,6 +16,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { JwtInterceptorService } from './service/jwt-interceptor.service';
 import { ErrorInterceptorService } from './service/error-interceptor.service';
+import { OrderComponent } from './components/order/order/order.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { ErrorInterceptorService } from './service/error-interceptor.service';
     LoginComponent,
     CartComponent,
     UserEditComponent,
+    OrderComponent,
   ],
   imports: [
     BrowserModule,

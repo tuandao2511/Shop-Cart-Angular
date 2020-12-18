@@ -79,8 +79,26 @@ export class CartService {
     }
   }
 
+  update(productInOrder: ProductInOrder): Observable<ProductInOrder> {
+    if(this.currentUser) {
+      console.log('productInOrder ' + JSON.stringify(productInOrder));
+      
+      const url = `${this.cartUrl}/${productInOrder.productId}`;
+      return this.http.put<ProductInOrder>(url, productInOrder.count).pipe()
+    } else {
+      this.localMap[productInOrder.productId] = productInOrder;
+      return of(productInOrder);
+    }
+  }
+
+
   clearLocalCart() {
     this.localMap = {};
     this.cookieService.delete('cart');
+  }
+
+  checkout() : Observable<any>{ 
+    const url = `${this.cartUrl}/checkout`
+    return this.http.post(url, null).pipe();
   }
 }
